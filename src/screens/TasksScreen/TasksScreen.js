@@ -40,92 +40,73 @@ const TasksScreen = () => {
           }}
         />
       </View>
-      {tasks.length > 0 ? (
-        <FlatList
-          style={{
-            marginTop: 20,
-            flexDirection: "column",
-          }}
-          data={tasks}
-          renderItem={({ item }) => (
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                padding: 10,
-                marginBottom: 10,
-                borderWidth: 1,
-                borderColor: "#ccc",
-                backgroundColor: "#fafafa",
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 20,
-                  }}
-                >
-                  {item.title}
-                </Text>
-                <Text
-                  style={{
-                    color: "#999",
-                  }}
-                >
-                  {item.description}
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 50,
-                  height: 50,
-                  backgroundColor: "#f00",
-                  borderRadius: 25,
-                }}
-                onPress={() => {
-                  deleteTask(item.id);
-                  Alert.alert("Suppression", item.title + " a été supprimé");
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#fff",
-                    fontWeight: "bold",
-                    fontSize: 20,
-                  }}
-                >
-                  X
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
-      ) : (
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-          }}
-        >
-          <Text
+      <FlatList
+        style={{
+          marginTop: 20,
+          flexDirection: "column",
+        }}
+        data={tasks}
+        renderItem={({ item, index }) => (
+          <View
             style={{
-              fontSize: 20,
-              fontWeight: "bold",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              padding: 10,
+              marginBottom: 10,
+              borderWidth: 1,
+              borderColor: "#ccc",
+              backgroundColor: "#fafafa",
             }}
           >
-            Aucune tâche
-          </Text>
-        </View>
-      )}
+            <View
+              style={{
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 20,
+                }}
+              >
+                {item.title}
+              </Text>
+              <Text
+                style={{
+                  color: "#999",
+                }}
+              >
+                {item.description}
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                width: 50,
+                height: 50,
+                backgroundColor: "#f00",
+                borderRadius: 25,
+              }}
+              onPress={() => {
+                deleteTask(item.id);
+                Alert.alert("Suppression", item.title + " a été supprimé");
+              }}
+            >
+              <Text
+                style={{
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: 20,
+                }}
+              >
+                X
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
     </View>
   );
 };

@@ -29,7 +29,7 @@ const tasksSignal = createSignal({
     deleteTask: (state, payload) => {
       return state.filter((task) => task.id !== payload);
     },
-    deleteAllTasks: (state, payload) => {
+    deleteAllTasks: () => {
       return [];
     },
   },
